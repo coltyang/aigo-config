@@ -1,0 +1,18 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: zuul-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+  instance:
+    prefer-ip-address: true #使用ip注册到eureka服务列表
+zuul:
+  ignoredServices: '*'
+  routes:
+    plat:
+      path: /plat/** #平台服务请求路径
+      serviceId: plat-service
+  prefix: /services #请求前缀
